@@ -4,12 +4,6 @@ import { hashPassword } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-/**
- * POST /api/seed
- * Idempotent seeding: only inserts sample data when the products table is
- * empty. Creates a realistic, active review website with 10 products,
- * 6 users, and 20 authentic reviews.
- */
 export async function POST() {
   try {
     const existing = await db.select({ id: products.id }).from(products);

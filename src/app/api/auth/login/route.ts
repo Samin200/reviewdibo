@@ -5,10 +5,6 @@ import { comparePassword, signToken } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-/**
- * POST /api/auth/login
- * Verify credentials, set an HttpOnly JWT cookie, return user data.
- */
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => null);

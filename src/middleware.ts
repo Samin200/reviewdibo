@@ -2,11 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { verifyToken } from "@/lib/auth";
 
-/**
- * Middleware protects /admin/* routes (redirect to /login if not admin).
- * Also protects POST /api/products, DELETE /api/products/[id], and
- * DELETE /api/reviews/[id] — they return 401/403 for non-admin requests.
- */
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const authCookie = request.cookies.get("auth_token")?.value;

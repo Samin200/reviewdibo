@@ -4,12 +4,6 @@ import { eq } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
-/**
- * POST /api/users
- * Create a user for anonymous review submission. If a user with the same
- * email already exists, we reuse (return) it instead of erroring — this makes
- * the frontend flow "create user then create review" idempotent per email.
- */
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => null);

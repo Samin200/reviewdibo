@@ -1,4 +1,3 @@
-/** Premium loading skeleton matching new card design */
 export default function ProductCardSkeleton() {
   return (
     <div className="premium-card">

@@ -6,11 +6,6 @@ import {
   timestamp,
 } from "drizzle-orm/pg-core";
 
-/**
- * Users table — minimal identity used for anonymous review submission.
- * Email is unique so we can "reuse" an existing user when the same person
- * submits multiple reviews.
- */
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -22,9 +17,6 @@ export const users = pgTable("users", {
     .defaultNow(),
 });
 
-/**
- * Products table — the items being reviewed.
- */
 export const products = pgTable("products", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
@@ -35,11 +27,6 @@ export const products = pgTable("products", {
     .defaultNow(),
 });
 
-/**
- * Reviews table — a rating (1-5) + comment, tied to a product and a user.
- * Both foreign keys cascade on delete so removing a product/user cleans up
- * its reviews automatically.
- */
 export const reviews = pgTable("reviews", {
   id: serial("id").primaryKey(),
   productId: integer("product_id")

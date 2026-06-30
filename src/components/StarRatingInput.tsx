@@ -2,11 +2,6 @@
 
 import { useState } from "react";
 
-/**
- * Interactive 1-5 star selector used in the review form. Supports hover
- * preview and keyboard focus for accessibility.
- */
-
 interface StarRatingInputProps {
   value: number;
   onChange: (rating: number) => void;

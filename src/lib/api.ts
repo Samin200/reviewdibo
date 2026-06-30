@@ -1,12 +1,4 @@
-/**
- * Typed API client for the review platform.
- *
- * Base URL resolution:
- * - If NEXT_PUBLIC_API_URL is set (e.g. http://localhost:8000 for the FastAPI
- *   backend), requests are sent there.
- * - If it's empty/unset, requests use relative paths and hit the built-in
- *   Next.js API routes under /api/*.
- */
+
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "";
 
@@ -61,7 +53,7 @@ export interface Review {
 
 // ---------- Helpers ----------
 
-/** Wrap fetch with JSON parsing and friendly error extraction. */
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response;
   try {

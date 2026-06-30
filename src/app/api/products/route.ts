@@ -4,11 +4,6 @@ import { eq, sql, desc } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
-/**
- * GET /api/products
- * List all products together with their average rating and review count.
- * A LEFT JOIN keeps products that have zero reviews.
- */
 export async function GET() {
   try {
     const rows = await db

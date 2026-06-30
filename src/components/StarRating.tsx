@@ -1,8 +1,3 @@
-/**
- * Read-only star rating display. Renders 5 stars and fills them based on the
- * `value` (supports halves via rounding to the nearest 0.5).
- */
-
 interface StarRatingProps {
   value: number;
   size?: "sm" | "md" | "lg";

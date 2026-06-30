@@ -4,11 +4,6 @@ import { eq, desc } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
-/**
- * GET /api/products/{id}
- * Return a single product with all of its reviews (including reviewer name),
- * plus the computed average rating and review count.
- */
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }

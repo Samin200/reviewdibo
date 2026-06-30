@@ -5,10 +5,6 @@ import { verifyToken } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-/**
- * GET /api/auth/me
- * Return the currently logged-in user's data (no password).
- */
 export async function GET(request: Request) {
   try {
     const cookieHeader = request.headers.get("cookie") || "";

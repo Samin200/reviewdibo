@@ -14,9 +14,6 @@ export interface JwtPayload {
   role: "user" | "admin";
 }
 
-/**
- * Sign a JWT token that expires in 7 days.
- */
 export async function signToken(payload: JwtPayload): Promise<string> {
   return new SignJWT({ ...payload })
     .setProtectedHeader({ alg: "HS256" })
@@ -25,9 +22,6 @@ export async function signToken(payload: JwtPayload): Promise<string> {
     .sign(JWT_SECRET);
 }
 
-/**
- * Verify a JWT token. Returns the decoded payload or null if invalid/expired.
- */
 export async function verifyToken(token: string): Promise<JwtPayload | null> {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
@@ -37,16 +31,10 @@ export async function verifyToken(token: string): Promise<JwtPayload | null> {
   }
 }
 
-/**
- * Hash a plaintext password with bcryptjs (10 salt rounds).
- */
 export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, SALT_ROUNDS);
 }
 
-/**
- * Compare a plaintext password against a bcrypt hash.
- */
 export async function comparePassword(
   password: string,
   hash: string

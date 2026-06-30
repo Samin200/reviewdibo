@@ -5,10 +5,6 @@ import { hashPassword } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
-/**
- * POST /api/auth/register
- * Create a new account with hashed password. Rejects duplicate emails.
- */
 export async function POST(request: Request) {
   try {
     const body = await request.json().catch(() => null);

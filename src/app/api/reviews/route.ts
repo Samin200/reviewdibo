@@ -4,11 +4,6 @@ import { eq, desc } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
-/**
- * GET /api/reviews
- * Return all reviews joined with product title and user name.
- * Used by the admin panel reviews tab.
- */
 export async function GET() {
   try {
     const rows = await db
