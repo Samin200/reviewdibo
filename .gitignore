@@ -9,3 +9,5 @@ backend/venv/
 *.pyc
 .DS_Store
 *.log
+.vercel
+tsconfig.tsbuildinfo
