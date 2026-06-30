@@ -112,3 +112,4 @@ This starts Next.js on port 3000 and FastAPI on port 8000 concurrently.
 | `DATABASE_URL` | Both | PostgreSQL connection string |
 | `NEXT_PUBLIC_API_URL` | Frontend | Backend base URL (empty = built-in routes) |
 | `JWT_SECRET` | Both | Secret for signing auth tokens |
+# reviewdibo
