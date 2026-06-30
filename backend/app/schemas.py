@@ -5,6 +5,11 @@ from datetime import datetime
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
+def to_camel(s: str) -> str:
+    parts = s.split("_")
+    return parts[0] + "".join(p.capitalize() for p in parts[1:])
+
+
 # ---------- Users ----------
 
 class UserCreate(BaseModel):
@@ -13,7 +18,7 @@ class UserCreate(BaseModel):
 
 
 class UserOut(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, alias_generator=to_camel, populate_by_name=True)
 
     id: int
     name: str
@@ -36,6 +41,8 @@ class AuthLogin(BaseModel):
 
 
 class AuthOut(BaseModel):
+    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
+
     id: int
     name: str
     email: EmailStr
@@ -58,7 +65,7 @@ class ReviewUpdate(BaseModel):
 
 
 class ReviewOut(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, alias_generator=to_camel, populate_by_name=True)
 
     id: int
     product_id: int
@@ -70,6 +77,8 @@ class ReviewOut(BaseModel):
 
 class ReviewWithUser(BaseModel):
     """Review enriched with the reviewer's name for the detail page."""
+
+    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
 
     id: int
     product_id: int
@@ -90,6 +99,8 @@ class ProductCreate(BaseModel):
 
 class ProductSummary(BaseModel):
     """Used by the list endpoint — includes aggregates."""
+
+    model_config = ConfigDict(from_attributes=True, alias_generator=to_camel, populate_by_name=True)
 
     id: int
     title: str
