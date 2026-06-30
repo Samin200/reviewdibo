@@ -8,7 +8,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import auth, products, reviews, users
+from .routers import auth, products, reviews, seed, users
 
 app = FastAPI(
     title="Reviewdibo API",
@@ -28,6 +28,7 @@ app.add_middleware(
 app.include_router(auth.router)
 app.include_router(products.router)
 app.include_router(reviews.router)
+app.include_router(seed.router)
 app.include_router(users.router)
 
 
