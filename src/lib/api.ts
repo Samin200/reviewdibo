@@ -29,7 +29,7 @@ export interface ReviewWithUser {
   rating: number;
   comment: string;
   createdAt: string;
-  userName: string;
+  user: string;
 }
 
 export interface ProductDetail {

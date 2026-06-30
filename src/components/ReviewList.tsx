@@ -29,7 +29,7 @@ export default function ReviewList({
   reviews: initialReviews,
   onRefresh,
 }: {
-  reviews: { id: number; productId: number; userId: number; rating: number; comment: string; createdAt: string; userName: string }[];
+  reviews: { id: number; productId: number; userId: number; rating: number; comment: string; createdAt: string; user: string }[];
   onRefresh?: () => Promise<void> | void;
 }) {
   const [user, setUser] = useState<AuthUser | null>(null);
@@ -121,14 +121,14 @@ export default function ReviewList({
       {reviews.map((review) => (
         <div key={review.id} className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
           <div className="flex items-start gap-4">
-            <div className={`shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center text-white text-base font-bold shadow-inner ${avatarColor(review.userName)}`}>
-              {review.userName.charAt(0).toUpperCase()}
+            <div className={`shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center text-white text-base font-bold shadow-inner ${avatarColor(review.user)}`}>
+              {review.user.charAt(0).toUpperCase()}
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <div>
-                  <p className="font-semibold text-slate-900">{review.userName}</p>
+                  <p className="font-semibold text-slate-900">{review.user}</p>
                   <div className="mt-1">
                     <StarRating value={review.rating} size="sm" />
                   </div>

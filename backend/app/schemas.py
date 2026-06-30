@@ -86,7 +86,7 @@ class ReviewWithUser(BaseModel):
     rating: int
     comment: str
     created_at: datetime
-    user_name: str
+    user_name: str = Field(alias="user")
 
 
 # ---------- Products ----------
