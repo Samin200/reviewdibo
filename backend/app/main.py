@@ -1,14 +1,15 @@
-"""FastAPI application entrypoint.
-
-- Enables permissive CORS for development.
-- Mounts the products, reviews, and users routers.
-- Exposes Swagger docs at /docs (default) and a health check at /api/health.
-"""
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from dotenv import load_dotenv
+
 from .routers import auth, products, reviews, seed, users
+
+load_dotenv()
+
+FRONTEND_URL = os.getenv("FRONTEND_URL", "")
 
 app = FastAPI(
     title="Reviewdibo API",
@@ -16,10 +17,11 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Allow all origins during development.
+origins = [FRONTEND_URL] if FRONTEND_URL else ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
