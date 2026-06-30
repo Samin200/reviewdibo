@@ -112,3 +112,14 @@ async def create_product(payload: ProductCreate, db: AsyncSession = Depends(get_
         average_rating=0.0,
         review_count=0,
     )
+
+
+@router.delete("/{product_id}")
+async def delete_product(product_id: int, db: AsyncSession = Depends(get_db)):
+    product = await db.get(Product, product_id)
+    if product is None:
+        raise HTTPException(status_code=404, detail="Product not found")
+
+    await db.delete(product)
+    await db.commit()
+    return {"ok": True, "id": product_id}
